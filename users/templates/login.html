@@ -1,0 +1,71 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
+    <link href="{% static 'css/login.css' %}" rel="stylesheet">
+    <title>AGENDAIF - Bem-vindo</title>
+</head>
+<body>
+
+    <main>
+        <section>
+            <div class="line"></div>
+            <form method="POST" action="{% url 'validateLogin' %}">{% csrf_token %}
+                <h1>AgendaIF</h1>
+
+                {% if status == '1' %}
+                    <h2 style="color: red;">E-mail ou senha incorretos!</h2>
+
+                {% endif %}
+
+                {% if status == '2' %}
+                    <h2 style="color: red;">Você ainda não fez login no sistema.</h2>
+
+                {% endif %}
+
+                {% if status == '3' %}
+                    <h2 style="color: rgb(0, 255, 98);">Um e-mail de recuperação foi enviado!</h2>
+
+                {% endif %}
+                    
+        
+                <input type="email" 
+                name="email" 
+                placeholder="nome@example.com">
+                
+                <input type= "password" 
+                name="password" 
+                placeholder="Digite sua senha...">
+                
+                <a href="{% url 'recover' %}">
+                    Esqueceu sua senha?</a>
+                
+                <button>
+                    <a type="submit">Entrar</a>
+                        <img src="{% static 'img/arrow-right.png' %}" 
+                        height="40"></button>
+                
+                <a id="signup" 
+                href="{% url 'cadastro' %}">Não tem uma conta? Cadastre-se</a>
+            
+            </form>
+
+            <img src="{% static 'img/calendarLogin.png' %}">
+
+            <div class="line"></div>
+        </section>
+
+    </main>
+    
+</body>
+</html>

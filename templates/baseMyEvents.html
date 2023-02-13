@@ -1,0 +1,85 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap" rel="stylesheet">
+    <link href="{% static 'css/base.css' %}" rel="stylesheet">
+    <title>AgendaIF - Inicio</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <h1>AGENDAIF</h1>
+            <ul>
+                <li><a href="{% url 'allEvents' %}">INÍCIO</a></li>
+                <li><a href="{% url 'home' %}">MEUS EVENTOS</a></li>
+                <li><a href="{% url 'today' %}">HOJE</a></li>
+            </ul>
+
+            <div class="menu">
+                <a href="{% url 'addEvent' %}"><button>Adicionar evento</button></a>
+                    
+                <ul class="dropdown">
+                    <li><a href="#"><img src="{% static 'img/you.svg' %}"></a></li>
+                        <ul id="dropdown">
+                            <li><a href="#">{{user.name}}</a></li>
+                            <li><a href="{% url 'about' %}">Sobre</a></li>
+                            <li><a href="{% url 'leave' %}">Sair</a></li>
+                        </ul>
+                </ul>
+            
+            </div>
+
+        </nav>
+
+        <div class="line"></div>
+
+    </header>
+
+    <main>
+        {%block 'content' %}
+        {% endblock %}
+    </main>
+
+    <div class="footerButtons">
+    
+        {% if page.has_previous %}
+            <a href="{% url 'home' %}?page={{page.previous_page_number}}"><img src="{% static 'img/left.svg' %}"></a>
+        
+        {% else %}
+            <a href=""><img src="{% static 'img/leftRed.svg' %}"></a>
+        {% endif %}
+
+        <span>
+            Página |{{ page.number }}| de |{{page.paginator.num_pages}}|
+        </span>
+        
+        {% if page.has_next %}
+            <a href="{% url 'home' %}?page={{page.next_page_number}}"><img src="{% static 'img/right.svg' %}"></a>
+        
+        {% else %}
+            <a href=""><img src="{% static 'img/rightRed.svg' %}"></a>
+        {% endif %}
+    </div>
+
+
+    <footer>
+        <div class="line"></div>
+        <p>© Desenvolvido em Django</p>
+        </div>
+    </footer>
+    
+</body>
+
+<script src="{% static 'js/scripts.js' %}"></script>
+</html>

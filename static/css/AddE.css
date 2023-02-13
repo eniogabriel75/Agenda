@@ -1,0 +1,344 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.line {
+    width: 95%;
+    padding: 1px;
+    background-color: #DDD6CF;
+}
+
+.line2 {
+    height: 90%;
+    padding: 1px;
+    background-color: #DDD6CF;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #FAF5F0;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1%;
+    gap: 45px;
+
+}
+
+header h1 {
+    font-size: 40px;
+    color: #43546E;
+}
+
+header nav {
+    display: flex;
+    gap: 220px;
+}
+
+header nav div.menu {
+    display: flex;
+    gap: 50px;
+
+}
+
+header nav div.space {
+    display: flex;
+    gap: 10px;
+
+}
+
+header nav ul {
+    gap: 50px;
+    display: flex;
+    align-items: center;
+}
+
+header nav ul li, a {
+    font-family: 'Source Sans Pro', sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+
+header nav ul li a:hover{
+    text-decoration: underline;
+}
+
+
+header ul li a {
+    font-size: 22px;
+    color: black;
+}
+
+header nav button {
+
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+    background-color: #4482e0;
+    color: white;
+    justify-content: center;
+    width: 275px;
+    height: 60px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+header nav ul.dropdown {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+header nav ul.dropdown ul#dropdown{
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    gap: 20px;
+    margin-top: 210px;
+    background-color: #ddd6cfb1;
+    border-radius: 10px;
+}
+
+header nav ul.dropdown:hover ul#dropdown{
+    display: flex;
+}
+
+
+main {
+    display: flex;
+    flex: 1 0 auto;
+    align-items: center;
+    justify-content: center;
+
+}
+
+main section.left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 700px;
+    gap: 15px;
+    padding: 0 7% 0 7%;
+    font-size: 14px;
+
+}
+
+main section.left div.block {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+main section.left section#square {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    width: 290px;
+    height: 200px;
+    border-radius: 20px;
+    background-color: white;
+}
+
+main section.left section#square div.buttons {
+    display: flex;
+    gap: 50px;
+    
+}
+
+main section.left section#square h4 {
+    font-size: 12px;
+    color: #687382;
+}
+
+main section.left section.square {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    justify-content: flex-start;
+    padding: 0 8%;
+    width: 290px;
+    height: 100px;
+    border-radius: 20px;
+    background-color: white;
+}
+
+main section.left section.square div.info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 170px;
+}
+
+main section.left section.square div.info h3 {
+    font-size: 18px;
+    color:black;
+}
+
+main section.left section.square div.info h4 {
+    font-size: 15px;
+    color: #687382;
+}
+
+main section.left section.square div.info div#buttons {
+    display: flex;
+    gap: 5px;
+}
+
+main section.left section.square div.info div#buttons button {
+    background-color: #ADDAFF;
+    border: none;
+    border-radius: 10px;
+    width: 35px;
+    color: black;
+    cursor: pointer;
+}
+
+main section.right {
+    display: flex;
+    width: 1400px;
+    padding: 0 0 0 3%;
+    align-items: center;
+
+}
+
+main section.right div.div-left {
+    display: flex;
+    flex-direction: column;
+    margin: 0 5% 0 4%;
+}
+
+main section.right div.div-left h1 {
+    display: flex;
+    font-size: 40px;
+    margin-bottom: 40px;
+}
+
+
+main section.right div.div-left h2 {
+    font-size: 15px;
+    color: #3C3A2D;
+}
+
+main section.right div.div-left input {
+    background-color: #ECE6E0;
+    padding: 0 10% 0 10%;
+    height: 70px;
+    width: 250px;
+    border: none;
+    border-radius: 15px;
+}
+
+
+/* main section.right div.div-left form input:placeholder-shown {
+    color: #3C3A2D;
+    
+}
+ */
+
+ main section.right div.div-left input:placeholder-shown {
+    color: #3C3A2D;
+    
+}
+
+
+/* main section.right div.div-left form button {
+    color: black;
+    height: 35px;
+    width: 75px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+} */
+
+main section.right div.div-right {
+    display: flex;
+    flex-direction: column;
+    height: 560px;
+    padding: 94px 0 0 0;
+}
+
+
+main section.right div.div-right h2 {
+    display: flex;
+    font-size: 15px;
+    color: #3C3A2D;
+}
+
+main section.right div.div-right select {
+    background-color: #ffffff;
+    padding: 0 10% 0 10%;
+    height: 70px;
+    width: 250px;
+    border: none;
+    border-radius: 15px;
+}
+
+main section.right div.div-right div.rooms {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 15px 25px;
+    background-color: #ECE6E0;
+    height: 390px;
+    width: 350px;
+    border-radius: 20px;
+}
+
+/* main section.right div.div-right div.rooms button{
+    width: 40%;
+    height: 12%;
+    border: none;
+    color: black;
+    border-radius: 20px;
+    cursor: pointer;
+} */
+
+main section.right div.div-right div.buttons {
+    display: flex;
+    margin-top: 20px;
+    gap: 20px;
+    justify-content: flex-end;
+    
+}
+
+main section.right div.div-right div.buttons button, .button {
+    width: 140px;
+    height: 50px;
+    border: none;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer; 
+}
+
+main section.right div.div-right div.buttons button:hover, .button:hover {
+    color: black;
+}
+
+
+
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1%;
+    flex-shrink: 0;
+    gap: 120px;
+}

@@ -1,0 +1,44 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
+    <link href="{% static 'css/about.css' %}" rel="stylesheet">
+    <title>AGENDAIF - Recuperar senha</title>
+</head>
+<body>
+    <main>
+        <div class="button">
+            <a href="{% url 'home' %}"><</a>
+        </div>
+        <section>
+            <div class="line"></div>
+            <div class="text">
+            <h1>AGENDAIF</h1>
+            <p>
+                Este projeto em Django foi desenvolvido nas disciplinas de Desenvolvimento
+                Sistemas Web, Análise e Projeto Orientado a Objetos, Banco de Dados e 
+                Seminário de Orientação ao Projeto de Desenvolvimento de Sistema Web com o objetivo
+                de ser um auxiliar no gerenciamento de aulas e eventos acontecidos no campus e pode servir
+                de base para um projeto maior e mais detalhado.
+            </p>
+            </div>
+
+            <img src="{% static 'img/calendarAbout.svg' %}">
+
+            <div class="line"></div>
+        </section>
+
+    </main>
+    
+</body>
+</html>

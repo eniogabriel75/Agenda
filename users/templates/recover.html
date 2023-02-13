@@ -1,0 +1,54 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
+    <link href="{% static 'css/login.css' %}" rel="stylesheet">
+    <title>AGENDAIF - Recuperar senha</title>
+</head>
+<body>
+
+    <main>
+        <section>
+            <div class="line"></div>
+            <form method="POST" action="{% url 'validateRecover' %}">{% csrf_token %}
+                <h1>AgendaIF</h1>
+
+                {% if status == '1' %}
+                    <h2 style="color: red;">O e-mail não foi encontrado!</h2>
+
+                {% endif %}
+                    
+        
+                <input type="email" 
+                name="email" 
+                placeholder="nome@example.com">
+                
+                
+                <button>
+                    <a type="submit">Recuperar</a>
+                        <img src="{% static 'img/arrow-right.png' %}" 
+                        height="40"></button>
+                
+                <p>Enviaremos um link com uma nova senha para seu e-mail.</p>
+            
+            </form>
+
+            <img src="{% static 'img/calendarLogin.png' %}">
+
+            <div class="line"></div>
+        </section>
+
+    </main>
+    
+</body>
+</html>

@@ -1,0 +1,127 @@
+{% extends 'baseAddC.html' %}
+{% load static %}
+
+{% block 'content' %}
+
+ 
+<section class="left">
+    <div class="block">
+
+        <h3>TIPO</h3>
+
+        <section id="square">
+
+            <div class="buttons">
+                <a href="#"><img src="{% static 'img/classroom green.svg' %}"></a>
+                <a href="{% url 'addEvent' %}"><img src="{% static 'img/events.svg' %}"></a>
+
+            </div>
+
+            <h4>Selecione um tipo de agendamento</h4>
+
+        </section>
+    </div>
+
+    <div class="block">
+        <h3>DATA E HORA</h3>
+        <section class="square">
+            <img src="{% static 'img/time.svg' %}" height="70">
+
+            <div class="info">
+
+                <h3>22/10/2022</h3>
+                <h4>13:00 - 14:50</h4>
+
+            </div>
+        </section>
+    </div>
+
+    <div class="block">
+        <h3>LOCAL</h3>
+        <section class="square">
+            <img src="{% static 'img/local.svg' %}" height="70">
+
+            <div class="info">
+
+                <h3>Campus PDF</h3>
+                <h4>Bloco 1 - Sala 49</h4>
+
+            </div>
+        </section>
+    </div>
+
+
+    <div class="block">
+        <h3>REFEIÇÕES</h3>
+        <section class="square">
+            <img src="{% static 'img/foods.svg' %}" height="70">
+
+            <div class="info">
+
+                <h3>QUANTIDADE</h3>
+
+                <div id="buttons">
+        
+                    <button style="background-color: #4AB561;">+20</button>
+                
+                </div>
+
+            </div>
+            
+        </section>
+    </div>
+    
+    
+</section>
+
+<div class="line2"></div>
+
+<section class="right">
+    <div class="div-left">
+        <form action="{% url 'registerEvent' %}" method="POST">
+            {% csrf_token %}
+            <h1>AULA</h1>
+
+            <h2>Disciplina:</h2>
+            {{form.name}}
+            <h2>Data:</h2>
+            {{form.registrationDate}}
+            <h2>Hora inicial:</h2>
+            {{form.timeStart}}
+            <h2>Hora final:</h2>
+            {{form.timeEnd}}
+            <h2>Alunos:</h2>
+            {{form.meals}}
+            {{form.user}}
+            {{form.tipo}}
+
+
+            </div>
+
+            <div class="div-right">
+
+                <h2>Local</h2>
+
+                <div class="rooms">
+
+                    {{form.local}}
+                        
+                </div>
+
+                <div class="buttons">
+
+                    <a href="{% url 'home' %}"><button type="button" style="background-color:red;">CANCELAR</button></a>
+                    <input type="submit" value="AGENDAR" style="background-color:#4AB561" class="button">
+                
+                
+                </div>
+
+            </div>
+        </form>
+    </div>
+
+</section>
+
+
+
+{% endblock %}

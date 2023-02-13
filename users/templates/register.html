@@ -1,0 +1,99 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;1,300&display=swap"
+      rel="stylesheet"
+    />
+
+    <link href="{% static 'css/register.css' %}" rel="stylesheet" />
+
+    <title>Criar conta</title>
+  </head>
+  <body>
+    <main>
+      <section class="container">
+        <section class="section">
+          <img src="{% static 'img/calendar.png' %}" />
+          <h1>
+            Uma maneira simples de organizar<br />
+            tudo o que acontece no campus!
+          </h1>
+          <aside>
+            <img id="logo" src="{% static 'img/ifrn-logo.png' %}" />
+            <p>© Desenvolvido em Django</p>
+          </aside>
+        </section>
+
+        <div class="line"></div>
+
+        <form method="POST" action="{% url 'validate' %}">{% csrf_token %}
+          <h1>Crie sua conta</h1>
+
+          {% if status == '1' %}
+            <h2 style="color: red;">Por favor, preencha todos os campos!</h2>
+
+          {% endif %}
+
+          {% if status == '2' %}
+          <h2 style="color: red;">A senha deve ter no mínimo 8 caracteres.</h2>
+
+          {% endif %}
+
+          {% if status == '3' %}
+          <h2 style="color: red;">Já existe um usuário com este mesmo e-mail.</h2>
+
+          {% endif %}
+
+          {% if status == '4' %}
+          <h2 style="color: red;">Ocorreu um erro inesperado, por favor, tente novamente!</h2>
+
+          {% endif %}
+
+          <input type="text" name="name" placeholder="Nome" />
+
+          <input
+            type="email"
+            name="email"
+            placeholder="Digite um endereço de e-mail"
+          />
+
+          <input
+            type="text"
+            name="registration"
+            placeholder="Digite sua indentificação do IFRN"
+          />
+
+          <input type="password" 
+          name="password" 
+          placeholder="Digite sua senha" />
+
+          <input
+            type="password"
+            name="password"
+            placeholder="Digite novamente sua senha"
+          />
+
+          <button type="submit">
+                Cadastre-se
+                <img src="{% static 'img/arrow-right.png' %}" 
+                height="40"></button>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

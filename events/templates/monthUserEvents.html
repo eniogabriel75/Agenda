@@ -1,0 +1,245 @@
+{% extends 'baseYearUser.html' %} {% load static %} {% block 'content' %}
+
+<div class="header">
+  <h1>MEUS EVENTOS</h1>
+  {% if today.month == 1 %}
+  <h3>Janeiro</h3>
+{% endif %}
+
+{% if today.month == 2 %}
+  <h3>Fevereiro</h3>
+{% endif %}
+
+{% if today.month == 3 %}
+  <h3>Março</h3>
+{% endif %}
+
+{% if today.month == 4 %}
+  <h3>Abril</h3>
+{% endif %}
+
+{% if today.month == 5 %}
+  <h3>Maio</h3>
+{% endif %}
+
+{% if today.month == 6 %}
+  <h3>Junho</h3>
+{% endif %}
+
+{% if today.month == 7 %}
+  <h3>Julho</h3>
+{% endif %}
+
+{% if today.month == 8 %}
+  <h3>Agosto</h3>
+{% endif %}
+
+{% if today.month == 9 %}
+  <h3>Setembro</h3>
+{% endif %}
+
+{% if today.month == 10 %}
+  <h3>Outubro</h3>
+{% endif %}
+
+{% if today.month == 10 %}
+<h3>Novembro</h3>
+{% endif %}
+
+{% if today.month == 10 %}
+<h3>Dezembro</h3>
+{% endif %}
+  
+
+  {% if status == '1' %}
+
+    <h1 style="color: red; font-size: 18px;">Erro ao excluir!</h1>
+
+  {% endif %}
+
+  {% if status == '2' %}
+
+    <h1 style="color: red; font-size: 18px;">Erro ao editar!</h1>
+
+  {% endif %}
+
+  <div class="filters">
+
+
+    <div class="dropdownFilterStart">
+      <ul class="dropdown">
+          <li>TIPO</li>
+            <ul id="dropdown">
+                <li><a href="{% url 'eventsUser' %}">EVENTO</a></li>
+                <li><a href="{% url 'classroomsUser' %}">AULA</a></li>
+            </ul>
+      </ul>
+    </div>
+
+    <div class="dropdownFilter">
+      <ul class="dropdown">
+          <li>FILTRAR</li>
+            <ul id="dropdown">
+                <li><a href="{% url 'weekUserEvents' %}">ESTA SEMANA</a></li>
+                <li><a href="{% url 'monthUserEvents' %}">ESTE MÊS</a></li>
+                <li><a href="{% url 'yearUserEvents' %}">ESTE ANO</a></li>
+            </ul>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<div class="word">
+  <div class="line3"></div>
+
+  <section>
+    {% for evento in page.object_list %}
+
+    <div class="block">
+      <div class="block2">
+        <div class="square">
+          <aside>
+            {% if evento.tipo == 'Aula' %}
+
+              <img src="{% static 'img/classroom.svg' %}" />
+
+            {% endif %}
+
+            {% if evento.tipo == 'Evento' %}
+
+              <img src="{% static 'img/events.svg' %}" />
+              
+            {% endif %}
+
+            <div class="info">
+              <h1>{{evento.name}}</h1>
+              <div class="line2"></div>
+            </div>
+          </aside>
+
+          <aside>
+            <img src="{% static 'img/time.svg' %}" />
+            <div class="info">
+              <h1>
+                {{evento.registrationDate.day}}/{{evento.registrationDate.month}}/{{evento.registrationDate.year}}
+              </h1>
+              <h4>{{evento.timeStart}} - {{evento.timeEnd}}</h4>
+              <div class="line2"></div>
+            </div>
+          </aside>
+
+          <aside>
+            <img src="{% static 'img/local.svg' %}" />
+            <div class="info">
+              <h1>{{evento.local}}</h1>
+              <div class="line2"></div>
+            </div>
+          </aside>
+        </div>
+
+        <button class="openmodal" id="dialog{{evento.id}}">+</button>
+      </div>
+      {% if today == evento.registrationDate %}
+      <aside>
+        <div class="line2-1"></div>
+      </aside>
+      {% endif %}
+
+      {% if today != evento.registrationDate %}
+      <aside>
+        <div class="line2-1" style="background-color: yellow;"></div>
+      </aside>
+      {% endif %}
+    </div>
+
+    <dialog class="dialog" id="dialog{{evento.id}}">
+      <div class="modal">
+        <div class="close">
+          <button class="closemodal">x</button>
+        </div>
+
+        <div class="modal2">
+          <div class="square">
+            <aside>
+              {% if evento.tipo == 'Aula' %}
+
+                <img src="{% static 'img/classroom.svg' %}" />
+
+              {% endif %}
+
+              {% if evento.tipo == 'Evento' %}
+
+                <img src="{% static 'img/events.svg' %}" />
+              
+              {% endif %}
+              <div class="info">
+                <h1>{{evento.user}}</h1>
+                <div class="line2"></div>
+              </div>
+            </aside>
+
+            <aside>
+              <img src="{% static 'img/matter.svg' %}" />
+              <div class="info">
+                <h1>{{evento.name}}</h1>
+                <div class="line2"></div>
+              </div>
+            </aside>
+
+            <aside>
+              <img src="{% static 'img/time.svg' %}" />
+              <div class="info">
+                <h1>
+                  {{evento.registrationDate.day}}/{{evento.registrationDate.month}}/{{evento.registrationDate.year}}
+                </h1>
+                <h4>{{evento.timeStart}} - {{evento.timeEnd}}</h4>
+                <div class="line2"></div>
+              </div>
+            </aside>
+
+            <aside>
+              <img src="{% static 'img/foods.svg' %}" />
+              <div class="info">
+                <h1>Refeições: {{evento.meals}}</h1>
+                <div class="line2"></div>
+              </div>
+            </aside>
+
+            <aside>
+              <img src="{% static 'img/local.svg' %}" />
+              <div class="info">
+                <h1>{{evento.local}}</h1>
+                <div class="line2"></div>
+              </div>
+            </aside>
+          </div>
+
+          {% if user.tipo == 'admin' %}
+          <div class="modalbuttons">
+            <a href="{% url 'delete' evento.id %}" class="deletar"
+              ><button>DELETAR</button></a
+            >
+            <a href="{% url 'edit' evento.id %}"><button>EDITAR</button></a>
+          </div>
+          {% endif %}
+
+          {% if user == evento.user %}
+          <div class="modalbuttons">
+            <a href="{% url 'delete' evento.id %}" class="deletar"
+              ><button>EXCLUIR</button></a
+            >
+            <a href="{% url 'edit' evento.id %}"><button>EDITAR</button></a>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </dialog>
+
+    {% endfor %}
+  </section>
+
+  <div class="line3"></div>
+  
+  {% endblock %}
+</div>
